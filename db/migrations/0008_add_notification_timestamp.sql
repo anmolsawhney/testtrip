@@ -1,0 +1,1 @@
+ALTER TABLE "profiles" ADD COLUMN "last_checked_notifications_at" timestamp;
