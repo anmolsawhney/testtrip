@@ -1,0 +1,141 @@
+/**
+ * @description
+ * Custom CSS for the new TripTrizz Landing Page.
+ * UPDATED: Reversed the background gradient colors. The warmer color now appears at the top
+ * and the cooler lavender at the bottom.
+ *
+ * Key features:
+ * - Scoped class names to avoid global conflicts.
+ * - Custom gradient text and button styles.
+ * - Responsive adjustments for a better mobile experience.
+ *
+ * @notes
+ * - The HSL variables are now defined as raw values (e.g., `0 0% 100%`) to be used correctly by Tailwind's `hsl()` function.
+ */
+ @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+ .triptrizz-landing-body {
+   /* Scoped theme for the landing page */
+   --primary: 271 46% 71%; /* HSL for #B591D9 */
+   --primary-darker: 271 46% 65%;
+   --primary-foreground: 0 0% 100%;
+   --subtle-bg-start: 270 100% 97%; /* Brighter lavender */
+   --subtle-bg-end: 30 100% 97%; /* Brighter peach */
+   --lavender-50: 270 100% 98%;
+   --lavender-100: 269 100% 95%;
+   --lavender-200: 268 100% 91%;
+   --lavender-300: 269 97% 85%;
+   --lavender-400: 270 95% 75%;
+   --lavender-500: 271 91% 65%;
+   --lavender-600: 271 81% 56%;
+   --lavender-700: 272 72% 47%;
+   --lavender-800: 272 67% 39%;
+   --lavender-900: 273 62% 32%;
+ 
+   /* Base styles */
+   font-family: "Inter", system-ui, sans-serif;
+   background: linear-gradient(
+     160deg,
+     hsl(var(--subtle-bg-end)) 0%,
+     hsl(var(--subtle-bg-start)) 100%
+   );
+   color: hsl(var(--foreground)); /* Inherits global foreground */
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .triptrizz-landing-html {
+   scroll-behavior: smooth; /* Use native smooth scrolling */
+ }
+ 
+ .gradient-text {
+   /* Use the original, lighter gradient from the app theme */
+   background: linear-gradient(
+     45deg,
+     rgb(184, 144, 216) 0%,
+     rgb(178, 121, 201) 100%
+   );
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text;
+   text-fill-color: transparent;
+ }
+ 
+ .btn-primary {
+   background-color: hsl(var(--primary)); /* Uses scoped --primary lavender */
+   color: hsl(var(--primary-foreground));
+   padding: 0.75rem 2rem;
+   border-radius: 0.5rem;
+   font-weight: 600;
+   transition: all 0.3s ease;
+   border: none;
+   cursor: pointer;
+   display: inline-block;
+   text-decoration: none;
+ }
+ 
+ .btn-primary:hover {
+   background-color: hsl(
+     var(--primary-darker)
+   ); /* Use a slightly darker shade on hover */
+   transform: translateY(-2px);
+ }
+ 
+ .btn-ghost {
+   background-color: transparent;
+   color: hsl(var(--primary)); /* Uses scoped --primary lavender */
+   padding: 0.75rem 2rem;
+   border-radius: 0.5rem;
+   font-weight: 600;
+   transition: all 0.3s ease;
+   border: none;
+   cursor: pointer;
+   display: inline-block;
+   text-decoration: none;
+ }
+ 
+ .btn-ghost:hover {
+   background-color: hsl(var(--lavender-50));
+   color: hsl(var(--lavender-700));
+ }
+ 
+ .feature-card {
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+ 
+ .feature-card:hover {
+   transform: translateY(-8px);
+   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+ }
+ 
+ .feature-image {
+   transition: all 0.7s ease;
+ }
+ 
+ .feature-image:hover {
+   transform: scale(1.05);
+   filter: brightness(1.1);
+ }
+ 
+ .landing-container {
+   max-width: 1200px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: 1rem;
+   padding-right: 1rem;
+ }
+ 
+ @media (max-width: 768px) {
+   .hero-title {
+     font-size: 2.5rem !important;
+     line-height: 1.2 !important;
+   }
+ 
+   .feature-section {
+     padding: 2rem 1rem;
+   }
+ 
+   .grid-lg-2 {
+     grid-template-columns: 1fr !important;
+   }
+ }
